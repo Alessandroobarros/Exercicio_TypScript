@@ -1,5 +1,5 @@
-import { Document }from "./Document"
-import { Person } from "./Person"
+import { Document }from "./Document.js"
+import { Person } from "./Person.js"
 
 
  export class Periodical extends Document{

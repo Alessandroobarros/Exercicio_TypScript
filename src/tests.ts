@@ -1,7 +1,7 @@
-import {Person} from "./entities/Person"
-import { Book } from "./entities/Book"
-import { Periodical} from "./entities/Periodical"
-import {Gender} from "./entities/Gender"
+import {Person} from "./entities/Person.js"
+import { Book } from "./entities/Book.js"
+import { Periodical} from "./entities/Periodical.js"
+import {Gender} from "./entities/Gender.js"
 
 let personOne = new Person("Alessandro", new Date(1992, 10, 9), Gender.Male)
 let persontwo = new Person("Genisvaldo", new Date(1870, 2, 10), Gender.Male)

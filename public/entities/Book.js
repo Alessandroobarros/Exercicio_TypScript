@@ -1,4 +1,4 @@
-import { Document } from "./Document";
+import { Document } from "./Document.js";
 export class Book extends Document {
     constructor(title, subtitle, publishedAt, author, isbn, edition, volume) {
         super(title, subtitle, publishedAt, author);
