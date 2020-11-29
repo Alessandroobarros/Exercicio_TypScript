@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Pessoas</title>
+    <link rel="stylesheet" href="base.css">
+</head>
+<body>
+    <form>
+        <h1>Formularido de cadastro</h1>
+        <p>Por favor preencha seus dados de cadastro</p>
+
+        <label>
+            <span>Nome</span>
+            <input id="name" placeholder="informe seu nome completo">
+        </label>
+        <br></br>
+
+        <label>
+            <span>Data nascimento</span>
+            <input id="birth" type="date">
+        </label>
+        <br></br>
+
+        <label>
+            <span>Sexo: </span>
+            <select id="sexo">
+                <option value="">Selecione</option>
+                <option value="f">Feminino</option>
+                <option value="m">Masculino</option>
+            </select>
+        </label>
+
+        <button>Concluir</button>
+    </form>
+    <div id="resposta"></div>
+    <script src="./entities/Person_Form.js" type="module"></script>    
+</body>
+</html>

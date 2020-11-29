@@ -1,0 +1,10 @@
+        .negative{
+            color: red;
+            font-weight: bold;
+            text-align: center;
+        }
+        .positive{
+            color:green;
+            font-weight: bold;
+            text-align: center;
+        }
