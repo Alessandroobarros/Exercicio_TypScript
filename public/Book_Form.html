@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Livros</title>
+    <link rel="stylesheet" href="base.css">
+</head>
+
+<body>
+
+    <form id="form">
+
+        <h1>Formularido de cadastro de Livros</h1>
+        <p>Por favor preencha os dados de cadastro</p>
+
+        <span>Selecione: </span>
+        <select id="tipo">
+            <option value="">Selecione o que deseja cadastrar !</option>
+            <option value="l">Livro</option>
+            <option value="p">Periodico</option>
+        </select>
+
+        <label id="documents" hidden="true">
+            <input type="text" id="titleDocument" placeholder="Título">
+            <input type="text" id="subtitleDocument" placeholder="Subtítulo">
+            <input type="date" id="publicDocument" placeholder="Publicado em ">
+            <input type="text" id="authorDocument" placeholder="Autor">
+            <!-- <select id="authorDocument" placeholder="Nome do autor: ">
+                <option value="">Selecione uma opção</option>
+            </select>
+            </br></br>  -->
+        </label>
+
+
+        <label id="books" hidden="true">
+            <input type="text" id="titleBook" placeholder="Título">
+            <input type="text" id="subtitleBook" placeholder="Subtítulo">
+            <input type="date" id="publicBook" placeholder="Publicado em ">
+            <input type="text" id="authorBook" placeholder="Autor">
+            <input type="number" id="isbnBook" placeholder="isbn">
+            <input type="number" id="editionBook" placeholder="Edição">
+            <input type="number" id="volumeBook" placeholder="Volume">
+        </label>
+        <br><br>
+
+        <button>Cadastrar</button>
+
+    </form>
+    <div id="resposta"></div>
+    <script src="./entities/Book_Form.js" type="module"></script>
+    <script src="./entities/Document.js" type="module"></script>
+
+</body>
+
+</html>

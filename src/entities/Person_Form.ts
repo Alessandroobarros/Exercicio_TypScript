@@ -11,7 +11,6 @@ const formulario = document.querySelector<HTMLFormElement>('form')!
 
 const persons : Person[] = []
 
-
 //Formulario que executa no clique ou no enter.
 formulario.addEventListener('submit', (e: Event) => {
     e.preventDefault()
@@ -54,7 +53,6 @@ formulario.addEventListener('submit', (e: Event) => {
         nascimento.focus()
         return
     }
-
     
     //Varificando se o campo não esta vazio
     if (!sexo.value) {
@@ -64,7 +62,7 @@ formulario.addEventListener('submit', (e: Event) => {
         return
     }
 
-    resposta.innerText = '!!'
+    resposta.innerText = 'Cadastro Realizado com sucesso!!'
     resposta.className = 'positive'
 
     try {
@@ -74,11 +72,9 @@ formulario.addEventListener('submit', (e: Event) => {
 
         //Necessidade de serealização
         localStorage.setItem('Persons', JSON.stringify(persons))
-        
 
     } catch (error: any) {
         console.error(error)
         resposta.innerText = "Opa, tivemos um problema. :("       
-  
     }
 })
