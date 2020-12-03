@@ -1,22 +1,21 @@
-import Book from "./Book.js"
-import Document from "./Document.js"
-import Person from "./Person.js"
+import Book from "./entities/Book.js"
+import Document from "./entities/Document.js"
+import Person from "./entities/Person.js"
 
 const tipo = document.querySelector<HTMLSelectElement>('#tipo')!
 const formulario = document.querySelector<HTMLFormElement>('form')!
 const titleD = document.querySelector<HTMLInputElement>('#titleDocument')!
 const subTituloD = document.querySelector<HTMLInputElement>('#subtitleDocument')!
 const publicD = document.querySelector<HTMLInputElement>('#publicDocument')!
-const authorD = document.querySelector<HTMLInputElement>('#authorDocument')!
+const author = document.querySelector<HTMLSelectElement>('#author')!
 const titleB = document.querySelector<HTMLInputElement>('#titleBook')!
 const subTituloB = document.querySelector<HTMLInputElement>('#subtitleBook')!
-const publicB = document.querySelector<HTMLDataElement>('#publicBook')!
-const authorB = document.querySelector<HTMLInputElement>('#authorBook')!
+const publicB = document.querySelector<HTMLInputElement>('#publicBook')!
 const isbn = document.querySelector<HTMLInputElement>('#isbnBook')!
 const editionB = document.querySelector<HTMLInputElement>('#editionBook')!
 const volumB = document.querySelector<HTMLInputElement>('#volumeBook')!
-const labelDocument = document.querySelector<HTMLLabelElement>('#documents')!
-const labelBook = document.querySelector<HTMLLabelElement>('#books')!
+const divDocument = document.querySelector<HTMLDivElement>('#documents')!
+const divBook = document.querySelector<HTMLDivElement>('#books')!
 const resposta = document.querySelector<HTMLDivElement>('#resposta')!
 
 const documentsInstance: Document[] = []
@@ -31,19 +30,22 @@ tipo.addEventListener('change', (e: Event) => {
     e.preventDefault()
     limpar()
     tipo.focus()
+    
 
     if (tipo.value == 'l') {
-        labelBook.hidden = false
-        labelDocument.hidden = true
-        // pullNames()
+        divBook.hidden = false
+        divDocument.hidden = true
+        author.hidden = false
 
     } else if (tipo.value == 'p') {
-        labelDocument.hidden = false
-        labelBook.hidden = true
-        // pullNames()
+        divDocument.hidden = false
+        divBook.hidden = true
+        author.hidden = false
+        
     } else {
-        labelDocument.hidden = true
-        labelBook.hidden = true
+        divDocument.hidden = true
+        divBook.hidden = true
+        author.hidden = true
     }
 })
 
@@ -73,21 +75,6 @@ formulario.addEventListener('submit', (e2: Event) => {
             return
         }
 
-        if (!authorB.value) {
-            resposta.innerText = 'Informe o nome do Autor'
-            resposta.className = 'negative'
-            authorB.focus()
-            return
-        }
-
-        const regexAuthorB = /\w+\s\w+/g
-        if (!regexAuthorB.test(authorB.value)) {
-            resposta.innerText = 'Informe seu nome completo !'
-            resposta.className = 'negative'
-            authorB.focus()
-            return
-        }
-
         if (!isbn.value) {
             resposta.innerText = 'Numero de registro obrigatório'
             resposta.className = 'negative'
@@ -109,8 +96,16 @@ formulario.addEventListener('submit', (e2: Event) => {
             return
         }
 
+        if (!author.value) {
+            resposta.innerText = 'Selecione o Autor'
+            resposta.className = 'negative'
+            author.focus()
+            return
+        }
+
         try {
-            let book = new Book(titleB.value, subTituloB.value, publicB.value, authorB.value, isbn.value, editionB.value, volumB.value)
+            const person = persons[parseInt(author.value, 10)]
+            let book = new Book(titleB.value, subTituloB.value, publicB.valueAsDate!, person, isbn.valueAsNumber, editionB.valueAsNumber, volumB.valueAsNumber)
 
             booksInstance.push(book)
 
@@ -144,15 +139,16 @@ formulario.addEventListener('submit', (e2: Event) => {
             return
         }
 
-        if (!authorD.value) {
-            resposta.innerText = 'Por gentileza informar o nome do autor ?'
+        if (!author.value) {
+            resposta.innerText = 'Selecione o Autor'
             resposta.className = 'negative'
-            authorD.focus()
+            author.focus()
             return
         }
 
         try {
-            let periodic = new Document(titleD.value, subTituloD.value, publicD.value, authorD.value)
+            const person = persons[parseInt(author.value, 10)]
+            let periodic = new Document(titleD.value, subTituloD.value, publicD.valueAsDate!, person)
 
             documentsInstance.push(periodic)
 
@@ -168,12 +164,13 @@ formulario.addEventListener('submit', (e2: Event) => {
     resposta.className = 'positive'
 })
 
-// let personLocalStorage: Array<Person> = JSON.parse(localStorage.getItem('Persons')!)
-// let name = personLocalStorage.map (p => p.name)
+let persons: Array<Person> = JSON.parse(localStorage.getItem('Persons')!)
 
-// function pullNames() {
-//     for (let i = 0; i < name.length;i++) {
-//         authorD.add(new Option(name[i].toString(), i.toString()))
-//     }
-//    return authorD
-// }
+let i = 0
+for (const person of persons){
+    const option = document.createElement('option')
+    option.value = i.toString()
+    option.innerText = person.name
+    author.append(option)
+    i++
+}

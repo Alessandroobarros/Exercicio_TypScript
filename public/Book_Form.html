@@ -22,34 +22,36 @@
             <option value="p">Periodico</option>
         </select>
 
-        <label id="documents" hidden="true">
+        <div id="documents" hidden="true">
             <input type="text" id="titleDocument" placeholder="Título">
             <input type="text" id="subtitleDocument" placeholder="Subtítulo">
             <input type="date" id="publicDocument" placeholder="Publicado em ">
-            <input type="text" id="authorDocument" placeholder="Autor">
-            <!-- <select id="authorDocument" placeholder="Nome do autor: ">
-                <option value="">Selecione uma opção</option>
-            </select>
-            </br></br>  -->
-        </label>
+        </div>
 
 
-        <label id="books" hidden="true">
+        <div id="books" hidden="true">
             <input type="text" id="titleBook" placeholder="Título">
             <input type="text" id="subtitleBook" placeholder="Subtítulo">
             <input type="date" id="publicBook" placeholder="Publicado em ">
-            <input type="text" id="authorBook" placeholder="Autor">
             <input type="number" id="isbnBook" placeholder="isbn">
             <input type="number" id="editionBook" placeholder="Edição">
             <input type="number" id="volumeBook" placeholder="Volume">
-        </label>
+
+        </div>
+
+        <select id="author" hidden="true" placeholder="Nome do autor: ">
+            <option value="">Selecione o autor</option>
+        </select>
+
+
+
         <br><br>
 
         <button>Cadastrar</button>
 
     </form>
     <div id="resposta"></div>
-    <script src="./entities/Book_Form.js" type="module"></script>
+    <script src="./Book_Form.js" type="module"></script>
     <script src="./entities/Document.js" type="module"></script>
 
 </body>

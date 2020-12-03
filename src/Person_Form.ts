@@ -1,6 +1,6 @@
 //importando as classes.
-import Gender from "./Gender.js"
-import Person from "./Person.js"
+import Gender from "./entities/Gender.js"
+import Person from "./entities/Person.js"
 
 //Obtendo valores dos campos
 const nome = document.querySelector<HTMLInputElement>('#name')!
@@ -62,9 +62,7 @@ formulario.addEventListener('submit', (e: Event) => {
         return
     }
 
-    resposta.innerText = 'Cadastro Realizado com sucesso!!'
-    resposta.className = 'positive'
-
+    
     try {
         let person = new Person(nome.value, dataNascimento, sexo.value === "f" ? Gender.Female :Gender.Male)
 
@@ -72,6 +70,9 @@ formulario.addEventListener('submit', (e: Event) => {
 
         //Necessidade de serealização
         localStorage.setItem('Persons', JSON.stringify(persons))
+
+        resposta.innerText = 'Cadastro Realizado com sucesso!!'
+        resposta.className = 'positive'
 
     } catch (error: any) {
         console.error(error)
