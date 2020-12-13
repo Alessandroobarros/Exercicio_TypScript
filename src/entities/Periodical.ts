@@ -7,7 +7,7 @@ import { Person } from "./Person.js"
     volume: Number
     issue: Number
 
-    constructor(title: String, subtitle: String, publishedAt: Date, author: Person, iss: Number, 
+    constructor(title: string, subtitle: string, publishedAt: Date, author: Person, iss: Number, 
         volume: Number, issue: Number){
         super(title, subtitle, publishedAt, author)
           this.iss = iss

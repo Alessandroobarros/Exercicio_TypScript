@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="base.css">
 </head>
 <body>
-    <form>
+    <form id="form1">
         <h1>Formularido de cadastro de Pessoas</h1>
         <p>Por favor preencha seus dados de cadastro</p>
 
@@ -33,6 +33,16 @@
         </label>
 
         <button>Concluir</button>
+    </form> 
+
+    <form id="form2">
+        <label>
+            <span>Digite o nome</span>
+            <input id="filter">
+        </label>
+
+        <button>Filtrar</button>
+        <button>Limpar Filtro</button>
     </form>
     <div id="resposta"></div>
     <script src="./Person_Form.js" type="module"></script>    

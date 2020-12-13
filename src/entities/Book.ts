@@ -3,12 +3,12 @@ import {Person} from "./Person.js"
 
 
  export class Book extends Document{
-      isbn: Number 
-      edition: Number 
-      volume: Number
+      isbn: number 
+      edition: number 
+      volume: number
 
-      constructor(title: String, subtitle: String, publishedAt: Date, author: Person, isbn: Number,
-        edition: Number, volume: Number){
+      constructor(title: string, subtitle: string, publishedAt: Date, author: Person, isbn: number,
+        edition: number, volume: number){
         super(title, subtitle, publishedAt, author)
           this.isbn = isbn
           this.edition = edition
