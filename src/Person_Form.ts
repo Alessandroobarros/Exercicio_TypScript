@@ -173,16 +173,23 @@ function showPersons() {
         ${lines}
     </tbody>
     `
-
 }
 
-formulario2.addEventListener('submit', (e: Event) =>{
+formulario2.addEventListener('submit', (e: Event) => {
     e.preventDefault()
-    
-    let filtro  = (Object: Person) => Object.name.toLowerCase() == nomeFiltro.value.toLowerCase()
 
-    let newFilter = persons.filter(filtro)
-    console.log(newFilter)
+    // let filtro = (Object: Person) => Object.name.toLowerCase() === nomeFiltro.value.toLowerCase()
+
+    function filter(obj: Person) {
+        if ('name' in obj && obj.name === nomeFiltro.value) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+      
+      
+    console.log(persons.filter(filter))
 
     let table = document.querySelector('table')
 
@@ -193,15 +200,12 @@ formulario2.addEventListener('submit', (e: Event) =>{
 
     let lines = ''
 
-    for (const person of newFilter) {
-
-        lines += `
+    lines += `
         <tr>
-            <td>${person.name}</td>
+            <td>${persons.filter(filter)}</td>
         </tr>
         `
-    }
-table.innerHTML = `
+    table.innerHTML = `
 <thead>
     <tr>
         <th>Nome</th>
